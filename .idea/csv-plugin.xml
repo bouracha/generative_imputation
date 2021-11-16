@@ -10,6 +10,76 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/saved_models/HGVAE_warmup200_lre-3/100_optim/0_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/0_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/1000_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/100_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/10_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/1_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/2700_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/300_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/30_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/VAE/3_occlusions_inputs_MAP.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/saved_models/VAE/kls.csv">
           <value>
             <Attribute>
@@ -18,20 +88,6 @@
           </value>
         </entry>
         <entry key="/saved_models/VAE/losses.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/saved_models/VDGCVAE_warmup200_lre-3/kls.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/saved_models/VDGCVAE_warmup200_lre-3/losses.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

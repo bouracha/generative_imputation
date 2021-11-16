@@ -149,10 +149,12 @@ class VDVAE(nn.Module):
 
         posterior_max = -1e10 * torch.ones(batch_size).to(self.device)
         inputs_best = torch.zeros(inputs_occluded.shape).to(self.device)
-        for i in range(100):
+        for i in range(10):
             inputs_with_parameters = parametise_inputs(inputs_occluded, occlusion_mask)
             inputs_with_parameters_dct = utils.dct(self, inputs_with_parameters)
             posterior = self.cal_posterior(inputs_with_parameters_dct.float(), latent_resolution=999)
+            if i==0:
+                posterior_init = posterior
 
             self.optimizer.zero_grad()
             neg_log_posterior = -torch.mean(posterior)
@@ -160,11 +162,11 @@ class VDVAE(nn.Module):
             total_norm = torch.nn.utils.clip_grad_norm_(self.parameters(), self.clipping_value)
             optimizer.step()
 
-            best_posteriors_bool = (posterior > posterior_max)
-            posterior_max[best_posteriors_bool] = posterior[best_posteriors_bool]
+            best_posteriors_bool = (posterior.detach() > posterior_max.detach())
+            posterior_max[best_posteriors_bool] = posterior[best_posteriors_bool].detach()
             inputs_best[best_posteriors_bool, :, :] = inputs_with_parameters[best_posteriors_bool, :, :].detach()
 
-        return inputs_best
+        return inputs_best.detach(), (posterior_init.detach(), posterior_max.detach())
 
 
 

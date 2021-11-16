@@ -127,6 +127,7 @@ class VAE(nn.Module):
 
     def cal_posterior(self, x):
         b_n = x.shape[0]
+        x = x.reshape(b_n, -1)
         y = self.encoder(x)
         self.z_mu, self.z_log_var = self.reparametisation_latent(y)
 
@@ -155,6 +156,8 @@ class VAE(nn.Module):
             inputs_with_parameters_dct = utils.dct(self, inputs_with_parameters)
             inputs_with_parameters_dct = inputs_with_parameters_dct.reshape(b_n, f_n * t_n)
             posterior = self.cal_posterior(inputs_with_parameters_dct.float())
+            if i==0:
+                posterior_init = posterior
 
             self.optimizer.zero_grad()
             neg_log_posterior = -torch.mean(posterior)
@@ -166,4 +169,4 @@ class VAE(nn.Module):
             posterior_max[best_posteriors_bool] = posterior[best_posteriors_bool]
             inputs_best[best_posteriors_bool, :, :] = inputs_with_parameters[best_posteriors_bool, :, :].detach()
 
-        return inputs_best
+        return inputs_best.detach(), (posterior_init.detach(), posterior_max.detach())

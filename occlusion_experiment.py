@@ -26,7 +26,7 @@ import train as train
 import models.utils as model_utils
 import models.VDVAE as nnmodel
 model = nnmodel.VDVAE(input_n=[54, in_n], variational=True, output_variance=True, device=device, batch_norm=False, p_dropout=0.0)
-train.initialise(model, start_epoch=501, folder_name="saved_models/VDGCVAE_warmup200_lre-3", lr=0.001, beta=1.0, l2_reg=1e-4, train_batch_size=800)
+train.initialise(model, start_epoch=501, folder_name="saved_models/HGVAE_warmup200_lre-3", lr=0.001, beta=1.0, l2_reg=1e-4, train_batch_size=800)
 #import models.VAE as nnmodel
 #model = nnmodel.VAE(input_n=54*50, hidden_layers=[2000, 1000, 500, 100, 50], n_z=50, variational=True, output_variance=True, device=device, batch_norm=True, p_dropout=0.0)
 #train.initialise(model, start_epoch=151, folder_name="saved_models/VAE", beta=1.0, l2_reg=1e-4, train_batch_size=2054)
@@ -36,7 +36,7 @@ train.initialise(model, start_epoch=501, folder_name="saved_models/VDGCVAE_warmu
 print('>>> loading datasets')
 test_dataset = AMASS(input_n=in_n, output_n=out_n, split=2)
 print('>>> Testing dataset length: {:d}'.format(test_dataset.__len__()))
-test_loader = DataLoader(test_dataset, batch_size=2056, shuffle=False, num_workers=0, pin_memory=False)
+test_loader = DataLoader(test_dataset, batch_size=400, shuffle=False, num_workers=0, pin_memory=False)
 
 def reconstructions(model, inputs, use_dct=True):
     with torch.no_grad():
@@ -65,12 +65,33 @@ def test_degraded_mse(test_loader, num_occlusions=0):
         occlusion_mask = torch.from_numpy(occlusion_mask).to(device).float()
         motion_gt = motion_gt.to(device).float()
 
+        motion_gt_dct = model_utils.dct(model, motion_gt)
+        posterior_gt = model.cal_posterior(motion_gt_dct).detach()
+
         #recons_of_occluded = reconstructions(model, motion_occluded, use_dct=True)
-        recons_of_occluded = model.gradient_ascent_on_posterior(motion_occluded, occlusion_mask)
+        map_imputation, (posterior_init, posterior_final) = model.gradient_ascent_on_posterior(motion_occluded, occlusion_mask)
 
+        MSE_per_datapoint = torch.sum(torch.pow((motion_gt-motion_occluded), 2), axis=(1,2))
+        MSE_MAP_per_datapoint = torch.sum(torch.pow((motion_gt-map_imputation ), 2), axis=(1,2))
 
-        MSE = torch.mean(torch.sum(torch.pow((motion_gt-motion_occluded), 2), axis=(1,2)), axis=0)
-        MSE_recon = torch.mean(torch.sum(torch.pow((motion_gt-recons_of_occluded ), 2), axis=(1,2)), axis=0)
+        head=['posterior_init','posterior_final','posterior_gt','mse_occluded','mse_map']
+        df = pd.DataFrame(posterior_init.cpu())
+        #print(df.shape)
+        #df["posterior_init"] = posterior_init.cpu()
+        df["posterior_final"] = posterior_final.cpu()
+        df["posterior_gt"] = posterior_gt.cpu()
+        df["MSE_occluded"] = MSE_per_datapoint.cpu()
+        df["MSE_MAP_occluded"] = MSE_MAP_per_datapoint.cpu()
+        #print(df.shape)
+        #print(i)
+        if i==0:
+            df.to_csv("saved_models/HGVAE_warmup200_lre-3/10_optim" + '/' + str(num_occlusions) + '_occlusions_inputs_MAP.csv', header=head, index=False)
+        else:
+            with open("saved_models/HGVAE_warmup200_lre-3/10_optim" + '/' + str(num_occlusions) + '_occlusions_inputs_MAP.csv', 'a') as f:
+                df.to_csv(f, header=False, index=False)
+
+        MSE = torch.mean(MSE_per_datapoint, axis=0)
+        MSE_recon = torch.mean(MSE_MAP_per_datapoint, axis=0)
         MSE_log.append(MSE.cpu().numpy())
         MSE_recon_log.append(MSE_recon.cpu().numpy())
     return np.mean(MSE_log), np.mean(MSE_recon_log)
