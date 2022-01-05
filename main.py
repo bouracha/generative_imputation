@@ -44,8 +44,6 @@ else:
 
 import models.HGVAE as nnmodel
 model = nnmodel.HGVAE(input_n=input_n, variational=opt.variational, output_variance=opt.output_variance, device=device, batch_norm=opt.batch_norm, p_dropout=opt.p_drop)
-#import models.VAE as nnmodel
-#model = nnmodel.VAE(input_n=54*50, hidden_layers=[2000, 1000, 500, 100, 50], n_z=50, variational=opt.variational, output_variance=opt.output_variance, device=device, batch_norm=opt.batch_norm, p_dropout=opt.p_drop)
 train.initialise(model, start_epoch=opt.start_epoch, folder_name=folder_name, lr=opt.lr, beta=opt.beta, l2_reg=opt.l2_reg, train_batch_size=opt.train_batch_size, warmup_time=opt.warmup_time, beta_final=opt.beta_final)
 
 for epoch in range(opt.start_epoch, opt.n_epochs+1):
