@@ -16,13 +16,13 @@ Some older versions may work. But we used the following:
 [AMASS](https://amass.is.tue.mpg.de/index.html) was obtained from the [repo](https://amass.is.tue.mpg.de/download.php), you need to make an account.
 
 ## Training commands
-To train HD-VAE as in the paper:
+To train HG-VAE as in the paper:
 ```bash
-python3 main.py --name "saved_models/HGVAE_warmup200_lre-3" --lr 0.0001 --warmup_time 200 --beta 0.0001 --n_epochs 500 --variational --output_variance --train_batch_size 800 --test_batch_size 800
+python3 main.py --name "saved_models/HGVAE" --lr 0.0001 --warmup_time 200 --beta 0.0001 --n_epochs 500 --variational --output_variance --train_batch_size 800 --test_batch_size 800
 ```
 see opt.py for all training options. By default checkpoints are saved every 10 epochs. Training may be stop, and resumed by using --start_epoch flag, for example
 ```bash
-python3 main.py --start_epoch 31 --name saved_models/HGVAE_warmup200_lre-3 --lr 0.0001 --warmup_time 200 --beta 0.0001 --n_epochs 500 --variational --output_variance --train_batch_size 800 --test_batch_size 800
+python3 main.py --start_epoch 31 --name "saved_models/HGVAE" --lr 0.0001 --warmup_time 200 --beta 0.0001 --n_epochs 500 --variational --output_variance --train_batch_size 800 --test_batch_size 800
 ```
 will start retraining from the checkpoint saved after epoch 30. We also use the start_epoch flag to select the checkpoint to use when using the trained model.
 
@@ -30,7 +30,7 @@ will start retraining from the checkpoint saved after epoch 30. We also use the 
 ```bash
 python3 occlusion_experiment.py
 ```
-to run occlusion experiments. This file assumes the above directory structure defined above "saved_models/HGVAE_warmup200_lre-3".
+to run occlusion experiments. This file assumes the above directory structure defined above "saved_models/HGVAE".
 
 ## Licence
 
