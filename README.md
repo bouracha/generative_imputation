@@ -19,7 +19,7 @@ Once downloaded the datasets should be added to the datasets folder, example bel
 
 ![Example](datasets/data_structure_example.png "Example of how datasets folder should look")
 
-It is necessary to also add a saved_models folder as each trained model will produce a lot of images and data as it trains. If training several models it is cleaner to have a separate folder for each of these sub-folders, so saving checkpoints to folders within a saved_models folder is hardcoded.
+It is necessary to also add a saved_models folder as each trained model will produce a lot of checkpoints and data as it trains. If training several models it is cleaner to have a separate folder for each of these sub-folders, so saving checkpoints to folders within a saved_models folder is hardcoded.
 
 ## Training commands
 To train HG-VAE as in the paper:
