@@ -15,6 +15,8 @@ Some older versions may work. But we used the following:
 
 [AMASS](https://amass.is.tue.mpg.de/index.html) was obtained from the [repo](https://amass.is.tue.mpg.de/download.php), you need to make an account.
 
+Once downloaded the datasets should be added to the datasets folder, example below.
+
 ![Example](datasets/data_structure_example.png "Example of how datasets folder should look")
 
 ## Training commands
