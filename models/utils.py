@@ -233,7 +233,7 @@ def dct(model, in_tensor, inverse=False):
         return tensor_idct
 
 # ===============================================================
-#                     VDVAE bookkeeping functions
+#                     HGVAE bookkeeping functions
 # ===============================================================
 
 def book_keeping(model, start_epoch=1):

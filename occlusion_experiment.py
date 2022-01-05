@@ -24,12 +24,9 @@ else:
 
 import train as train
 import models.utils as model_utils
-import models.VDVAE as nnmodel
-model = nnmodel.VDVAE(input_n=[54, in_n], variational=True, output_variance=True, device=device, batch_norm=False, p_dropout=0.0)
+import models.HGVAE as nnmodel
+model = nnmodel.HGVAE(input_n=[54, in_n], variational=True, output_variance=True, device=device, batch_norm=False, p_dropout=0.0)
 train.initialise(model, start_epoch=501, folder_name="saved_models/HGVAE_warmup200_lre-3", lr=0.001, beta=1.0, l2_reg=1e-4, train_batch_size=800)
-#import models.VAE as nnmodel
-#model = nnmodel.VAE(input_n=54*50, hidden_layers=[2000, 1000, 500, 100, 50], n_z=50, variational=True, output_variance=True, device=device, batch_norm=True, p_dropout=0.0)
-#train.initialise(model, start_epoch=151, folder_name="saved_models/VAE", beta=1.0, l2_reg=1e-4, train_batch_size=2054)
 
 
 

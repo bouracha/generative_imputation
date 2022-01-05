@@ -19,14 +19,16 @@ Once downloaded the datasets should be added to the datasets folder, example bel
 
 ![Example](datasets/data_structure_example.png "Example of how datasets folder should look")
 
+It is necessary to also add a saved_models folder as each trained model will produce a lot of images and data as it trains. If training several models it is cleaner to have a separate folder for each of these sub-folders, so saving checkpoints to folders within a saved_models folder is hardcoded.
+
 ## Training commands
 To train HG-VAE as in the paper:
 ```bash
-python3 main.py --name "saved_models/HGVAE" --lr 0.0001 --warmup_time 200 --beta 0.0001 --n_epochs 500 --variational --output_variance --train_batch_size 800 --test_batch_size 800
+python3 main.py --name "HGVAE" --lr 0.0001 --warmup_time 200 --beta 0.0001 --n_epochs 500 --variational --output_variance --train_batch_size 800 --test_batch_size 800
 ```
 see opt.py for all training options. By default checkpoints are saved every 10 epochs. Training may be stop, and resumed by using --start_epoch flag, for example
 ```bash
-python3 main.py --start_epoch 31 --name "saved_models/HGVAE" --lr 0.0001 --warmup_time 200 --beta 0.0001 --n_epochs 500 --variational --output_variance --train_batch_size 800 --test_batch_size 800
+python3 main.py --start_epoch 31 --name "HGVAE" --lr 0.0001 --warmup_time 200 --beta 0.0001 --n_epochs 500 --variational --output_variance --train_batch_size 800 --test_batch_size 800
 ```
 will start retraining from the checkpoint saved after epoch 30. We also use the start_epoch flag to select the checkpoint to use when using the trained model.
 

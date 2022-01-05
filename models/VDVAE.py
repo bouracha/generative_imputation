@@ -18,7 +18,7 @@ from models.layers import FullyConnected
 from models.layers import ParametiseInputs
 
 
-class VDVAE(nn.Module):
+class HGVAE(nn.Module):
     def __init__(self, input_n=[54, 50], act_fn=nn.GELU(), variational=False, output_variance=False, device="cuda", batch_norm=False, p_dropout=0.0):
         """
         :param input_n: num of input feature; (graph_n, feature_n)
@@ -28,7 +28,7 @@ class VDVAE(nn.Module):
         :param num_stage: number of residual blocks
         :param node_n: number of nodes in graph
         """
-        super(VDVAE, self).__init__()
+        super(HGVAE, self).__init__()
         print(">>> creating model")
 
         self.activation = act_fn

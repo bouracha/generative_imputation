@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/saved_models/HGVAE_warmup200_lre-3/losses.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/saved_models/VAE/0_occlusions_inputs_MAP.csv">
           <value>
             <Attribute>
@@ -95,6 +102,13 @@
           </value>
         </entry>
         <entry key="/saved_models/VGVAE/losses.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/saved_models/saved_models/HGVAE/losses.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
