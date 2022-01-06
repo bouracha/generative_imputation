@@ -32,12 +32,6 @@ python3 main.py --start_epoch 31 --name "HGVAE" --lr 0.0001 --warmup_time 200 --
 ```
 will start retraining from the checkpoint saved after epoch 30. We also use the start_epoch flag to select the checkpoint to use when using the trained model.
 
-## Occlusion experiments
-```bash
-python3 occlusion_experiment.py
-```
-to run occlusion experiments. This file assumes the above directory structure defined above "saved_models/HGVAE".
-
 ## Licence
 
 MIT
