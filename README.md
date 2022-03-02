@@ -35,3 +35,16 @@ will start retraining from the checkpoint saved after epoch 30. We also use the 
 ## Licence
 
 MIT
+
+## Paper
+
+If you use the code please cite:
+
+@misc{bourached2022hierarchical,
+      title={Hierarchical Graph-Convolutional Variational AutoEncoding for Generative Modelling of Human Motion}, 
+      author={Anthony Bourached and Robert Gray and Ryan-Rhys Griffiths and Ashwani Jha and Parashkev Nachev},
+      year={2022},
+      eprint={2111.12602},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
