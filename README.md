@@ -38,8 +38,9 @@ MIT
 
 ## Paper
 
-If you use the code please cite:
+If you use our code, please cite:
 
+```
 @misc{bourached2022hierarchical,
       title={Hierarchical Graph-Convolutional Variational AutoEncoding for Generative Modelling of Human Motion}, 
       author={Anthony Bourached and Robert Gray and Ryan-Rhys Griffiths and Ashwani Jha and Parashkev Nachev},
@@ -48,3 +49,4 @@ If you use the code please cite:
       archivePrefix={arXiv},
       primaryClass={cs.CV}
 }
+```
