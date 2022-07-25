@@ -39,6 +39,8 @@ MIT
 ## Paper
 
 If you use our code, please cite:
+
+```
 @article{DBLP:journals/corr/abs-2111-12602,
   author    = {Anthony Bourached and
                Robert Gray and
@@ -57,3 +59,4 @@ If you use our code, please cite:
   biburl    = {https://dblp.org/rec/journals/corr/abs-2111-12602.bib},
   bibsource = {dblp computer science bibliography, https://dblp.org}
 }
+```
