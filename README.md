@@ -41,22 +41,5 @@ MIT
 If you use our code, please cite:
 
 ```
-@article{DBLP:journals/corr/abs-2111-12602,
-  author    = {Anthony Bourached and
-               Robert Gray and
-               Ryan{-}Rhys Griffiths and
-               Ashwani Jha and
-               Parashkev Nachev},
-  title     = {Hierarchical Graph-Convolutional Variational AutoEncoding for Generative
-               Modelling of Human Motion},
-  journal   = {CoRR},
-  volume    = {abs/2111.12602},
-  year      = {2021},
-  url       = {https://arxiv.org/abs/2111.12602},
-  eprinttype = {arXiv},
-  eprint    = {2111.12602},
-  timestamp = {Fri, 26 Nov 2021 13:48:43 +0100},
-  biburl    = {https://dblp.org/rec/journals/corr/abs-2111-12602.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+IN REVIEW
 ```
